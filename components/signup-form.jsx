@@ -43,7 +43,9 @@ export function SignUpForm() {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Something went wrong");
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
 
       const signInRes = await signIn("credentials", {
         email: formData.email,
@@ -52,7 +54,7 @@ export function SignUpForm() {
       });
 
       if (signInRes?.error) {
-        throw new Error("Could not sign in automatically.");
+        throw new Error(signInRes.error);
       }
 
       router.push("/dashboard");

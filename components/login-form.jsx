@@ -35,7 +35,7 @@ export function LoginForm({ className, ...props }) {
     setLoading(false);
 
     if (result?.error) {
-      setError("Invalid email or password");
+      setError(result.error);
     } else {
       router.push("/dashboard");
     }

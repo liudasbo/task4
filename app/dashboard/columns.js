@@ -1,4 +1,5 @@
-"use client";
+import { ArrowUpDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const columns = [
   {
@@ -7,7 +8,17 @@ export const columns = [
   },
   {
     accessorKey: "email",
-    header: "Email",
+    header: ({ column }) => {
+      return (
+        <div
+          className="flex cursor-pointer"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Email
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </div>
+      );
+    },
   },
   {
     accessorKey: "status",
